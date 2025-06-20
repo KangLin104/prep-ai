@@ -23,25 +23,24 @@ const LandingPage = () => {
             Interview Prep AI
           </div>
           <button
-            className=''
+            className='bg-linear-to-r from-[#ff9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2.5 rounded-full hover:bg-black hover:text-white border border-white transition-colors cursor-pointer'
             onClick={() => setOpenAuthModal(true)}
           >
             Login / sign up
           </button>
         </header>
-      </div>
 
       {/* Hero content */}
 
-      <div className=''>
-        <div className=''>
-          <div className=''>
-            <div className=''>
+      <div className='flex flex-col md:flex-row'>
+        <div className='w-full md:w-1/2 pr-4 mb-8 md:mb-0'>
+          <div className='flex items-center justify-left mb-2'>
+            <div className='flex items-center gap-2 text-[13px] text-amber-500 font-semibold bg-amber-100 px-3 py-1 rounded-full border border-amber-200'>
               Ai powered
             </div>
           </div>
 
-          <h1 className=''>
+          <h1 className='text-5xl text-black font-medium mb-6 leaeding-tight'>
             Ai interview with <br />
             <span className=''>
               AI-powered 
@@ -62,6 +61,7 @@ const LandingPage = () => {
             </button>
         </div>
       </div>
+    </div>
     </div>
   )
 }
