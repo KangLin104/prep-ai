@@ -24,3 +24,27 @@ axiosInstance.interceptors.request.use(
         return Promise.reject(error);
     }
 );
+
+axiosInstance.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    (error) => {
+        if (error.response) {
+            // Handle specific error responses
+            if (error.response.status === 401) {
+                window.location.href = '/';
+            } else if (error.response.status >= 500) {
+                // Server error, handle accordingly
+                console.error('Server error');
+            }
+        }
+        else if (error.code === "ECONNABORTED") {
+            // Handle timeout error
+            console.error('Request timed out');
+        }
+        return Promise.reject(error);
+    }
+);
+
+export default axiosInstance;
