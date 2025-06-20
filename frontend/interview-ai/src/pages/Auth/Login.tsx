@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import Input from '../../components/Inputs/Input';
 import { validateEmail } from '../../utils/helper';
+import axiosInstance from '../../utils/axiosInstance';
+import { API_PATHS } from '../../utils/apiPaths';
+import { useNavigate } from 'react-router-dom';
+
 interface LoginProps {
     setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
   }
@@ -10,7 +14,7 @@ const Login: React.FC<LoginProps> = ({setCurrentPage}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,6 +32,18 @@ const Login: React.FC<LoginProps> = ({setCurrentPage}) => {
     setError("");
 
     try {
+      
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password
+      });
+
+      const { token } = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        navigate("/dashboard");
+      }
       
     } catch (error: any) {
       if (error.response && error.response.data) {
