@@ -16,6 +16,7 @@ const ProfileInfoCard = () => {
     
 
   return (
+    user && (
     <div className='flex items-center'>
         <div>
             <div className='text-[15px] font-bold text-black leading-3'>
@@ -30,7 +31,7 @@ const ProfileInfoCard = () => {
             </button>
         </div>
     </div>
-  )
+  ))
 }
 
 export default ProfileInfoCard
