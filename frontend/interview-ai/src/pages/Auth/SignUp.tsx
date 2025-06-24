@@ -10,6 +10,7 @@ const Signup: React.FC<SignUpProps> = ({setCurrentPage}) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();

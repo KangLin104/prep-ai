@@ -4,6 +4,7 @@ import { validateEmail } from '../../utils/helper';
 import axiosInstance from '../../utils/axiosInstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../context/userContext';
 
 interface LoginProps {
     setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
@@ -14,6 +15,8 @@ const Login: React.FC<LoginProps> = ({setCurrentPage}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const { updateUser } = useUserContext();
+
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -39,9 +42,11 @@ const Login: React.FC<LoginProps> = ({setCurrentPage}) => {
       });
 
       const { token } = response.data;
-
+      
       if (token) {
+        console.log("Login response:", response.data);
         localStorage.setItem("token", token);
+        updateUser(response.data);
         navigate("/dashboard");
       }
       
