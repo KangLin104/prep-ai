@@ -2,6 +2,9 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/Inputs/Input';
 import { validateEmail } from '../../utils/helper';
+import { API_PATHS } from '../../utils/apiPaths';
+import axiosInstance from '../../utils/axiosInstance';
+import { useUserContext } from '../../context/userContext';
 
 interface SignUpProps {
     setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
@@ -13,6 +16,7 @@ const Signup: React.FC<SignUpProps> = ({setCurrentPage}) => {
   
 
   const [error, setError] = useState<string | null>(null);
+  const { updateUser } = useUserContext();
   const navigate = useNavigate();
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -32,6 +36,19 @@ const Signup: React.FC<SignUpProps> = ({setCurrentPage}) => {
 
     try {
       
+      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+        name: fullName,
+        email,
+        password
+      });
+      console.log("Signup response:", response.data);
+      const {token} = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(response.data);
+        navigate("/dashboard");
+      }
     } catch (error: any) {
       if (error.response && error.response.data) {
         setError(error.response.data.message || "An error occurred during login.");
