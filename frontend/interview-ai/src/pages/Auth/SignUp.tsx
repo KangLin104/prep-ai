@@ -41,7 +41,6 @@ const Signup: React.FC<SignUpProps> = ({setCurrentPage}) => {
         email,
         password
       });
-      console.log("Signup response:", response.data);
       const {token} = response.data;
 
       if (token) {
