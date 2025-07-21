@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import Login from "./pages/Auth/Login";
-import Signup from "./pages/Auth/SignUp";
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Home/Dashboard";
 import InterviewPrep from "./pages/InterviewPrep/InterviewPrep";
@@ -10,26 +8,26 @@ import UserProvider from "./context/userContext";
 
 const App = () => {
   return (
-    <UserProvider>
-      <div>
-        <Router>
+    <Router>
+      <UserProvider>
+        <div>
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/interviewprep" element={<InterviewPrep />} />
+            <Route path="/interview-prep/:sessionID" element={<InterviewPrep />} />
           </Routes>
-        </Router>
 
-        <Toaster
-          toastOptions={{
-            className: "",
-            style: {
-              fontSize: "13px",
-            },
-          }}
-        />
-      </div>
-    </UserProvider>
+          <Toaster
+            toastOptions={{
+              className: "",
+              style: {
+                fontSize: "13px",
+              },
+            }}
+          />
+        </div>
+      </UserProvider>
+    </Router>
   );
 };
 

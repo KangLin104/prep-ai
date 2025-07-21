@@ -44,7 +44,6 @@ const Login: React.FC<LoginProps> = ({setCurrentPage}) => {
       const { token } = response.data;
       
       if (token) {
-        console.log("Login response:", response.data);
         localStorage.setItem("token", token);
         updateUser(response.data);
         navigate("/dashboard");
