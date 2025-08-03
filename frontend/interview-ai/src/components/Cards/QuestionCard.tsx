@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, use } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { LuChevronDown, LuPin, LuPinOff, LuSparkles } from "react-icons/lu";
 import AiResponsePreview from "../../pages/InterviewPrep/components/AiResponsePreview";
 

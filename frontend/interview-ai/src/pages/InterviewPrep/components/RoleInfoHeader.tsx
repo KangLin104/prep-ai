@@ -14,7 +14,6 @@ const RoleInfoHeader: React.FC<RoleInfoHeaderProps> = ({
   topicToFocus,
   experience,
   questions,
-  description,
   lastUpdated,
 }) => {
   return (
