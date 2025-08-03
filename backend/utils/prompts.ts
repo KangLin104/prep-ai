@@ -2,7 +2,7 @@ export const questionAnswerPrompt = (
   role: string,
   experience: string,
   topicToFocus: string,
-  numberOfQuestion: number
+  numberOfQuestions: number
 ): string => `
         You are an AI assistant designed to help users prepare for job interviews.
 
@@ -10,7 +10,7 @@ export const questionAnswerPrompt = (
         - Role: ${role}
         - Canadiate Experience: ${experience}
         - Topic to Focus: ${topicToFocus}
-        - Write ${numberOfQuestion} interview questions.
+        - Write ${numberOfQuestions} interview questions.
         - For each question generate a detailed answer but begginer friendly.
         - If the answer needs code provide a code example, add a small code block inside.
         - keep formatting clean.
@@ -35,13 +35,12 @@ export const conceptExplainPrompts = (question: string): string => `
     - After explaining, provide a short and clear title that summarizes the concept for the article or page Header.
     - If the answer needs code provide a code example, add a small code block inside.
     - Return the result as a valid JSON object in the following format.
-            - Return a pure JSON array like:
-        [
+        - Return a pure JSON like:
           {
+            "title": "Understanding var, let, and const in JavaScript",
             "question": "What is the difference between var, let, and const in JavaScript?",
             "answer": "In JavaScript, 'var' is function-scoped and can be re-declared, 'let' is block-scoped and cannot be re-declared in the same scope, and 'const' is also block-scoped but must be initialized at declaration and cannot be reassigned."
           },
           ...
-        ]
         Important: Do not add extra text. Only return valid JSON.
     `;
