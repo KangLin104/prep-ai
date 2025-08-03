@@ -65,7 +65,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     const updateUser =  (userData: User) => {
         setUser(userData);
         localStorage.setItem("user", JSON.stringify(userData));
-        console.log("User updated:", userData);
         setLoading(false);
     }
 

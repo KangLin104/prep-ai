@@ -4,7 +4,7 @@ import { useUserContext } from "../context/userContext";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { user } = useUserContext();
-    console.log("ProtectedRoute user:", user);
+
   if (!user) {
     return <Navigate to="/" replace />;
   }
