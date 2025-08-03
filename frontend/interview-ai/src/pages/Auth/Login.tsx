@@ -82,13 +82,14 @@ const Login: React.FC<LoginProps> = ({setCurrentPage}) => {
         
         { error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
 
-        <button type='submit' className='btn-primary'>
+        <button className='btn-primary'>
           Login
         </button>
 
         <p className='text=[13px] text-slate-800 mt-3'>
           Dont have an account?{" "}
           <button 
+            type='submit'
             className='font-medium text-primary hover:underline cursor-pointer'
             onClick={() => setCurrentPage("signup")}
           >
