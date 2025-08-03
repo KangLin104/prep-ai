@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { APP_FEATURES } from "../utils/data";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
 import Signup from "./Auth/SignUp";
@@ -13,6 +12,12 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const [openAuthModel, setOpenAuthModal] = useState(false);
   const [currentPage, setCurrentPage] = useState("login");
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
 
   const handleCTA = () => {
     if (!user) {
