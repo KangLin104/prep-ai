@@ -12,9 +12,9 @@ export const generateInterviewQuestions = async (
   res: Response
 ): Promise<any> => {
   try {
-    const { role, experience, topicToFocus, numberOfQuestion } = req.body;
+    const { role, experience, topicToFocus, numberOfQuestions } = req.body;
 
-    if (!role || !experience || !topicToFocus || !numberOfQuestion) {
+    if (!role || !experience || !topicToFocus || !numberOfQuestions) {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
@@ -22,7 +22,7 @@ export const generateInterviewQuestions = async (
       role,
       experience,
       topicToFocus,
-      numberOfQuestion
+      numberOfQuestions
     );
 
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
@@ -70,7 +70,6 @@ export const generateConecptExplanation = async (
 
       const data = JSON.parse(cleanText);
       res.status(200).json(data);
-
 
     } catch (error: any) {
       res.status(500).json({ message: "Server error", error: error.message });

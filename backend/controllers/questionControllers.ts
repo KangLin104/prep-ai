@@ -12,15 +12,15 @@ export const addQuestionToSession = async (
   res: Response
 ): Promise<any> => {
   try {
-    const { seesionId, questions } = req.body;
-
-    if (!seesionId || !questions || !Array.isArray(questions)) {
+    
+    const { sessionID, questions } = req.body;
+    if (!sessionID || !questions || !Array.isArray(questions)) {
       return res
         .status(400)
         .json({ message: "Session ID and questions are required" });
     }
 
-    const session = await Session.findById(seesionId);
+    const session = await Session.findById(sessionID);
 
     if (!session) {
       return res.status(404).json({ message: "Session not found" });
@@ -30,7 +30,7 @@ export const addQuestionToSession = async (
       questions.map(
         async (q: IQuestion) =>
           await Question.create({
-            session: seesionId,
+            session: sessionID,
             question: q.question,
             answer: q.answer,
           })
