@@ -101,7 +101,7 @@ const Signup: React.FC<SignUpProps> = ({setCurrentPage}) => {
           Have an Account?{" "}
           <button 
             className='font-medium text-primary hover:underline cursor-pointer'
-            onClick={() => setCurrentPage("signup")}
+            onClick={() => setCurrentPage("login")}
           >
             Login
           </button>
