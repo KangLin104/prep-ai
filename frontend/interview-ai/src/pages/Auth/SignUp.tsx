@@ -10,6 +10,7 @@ interface SignUpProps {
     setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
   }
 const Signup: React.FC<SignUpProps> = ({setCurrentPage}) => {
+  console.log("Signup component rendered");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +22,6 @@ const Signup: React.FC<SignUpProps> = ({setCurrentPage}) => {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!fullName) {
       setError("Full name is required");
       return;
@@ -93,7 +93,7 @@ const Signup: React.FC<SignUpProps> = ({setCurrentPage}) => {
 
         {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
 
-        <button className='btn-primary'>
+        <button type='submit' className='btn-primary'>
           SIGN UP
         </button>
 
