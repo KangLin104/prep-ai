@@ -42,7 +42,6 @@ const Login: React.FC<LoginProps> = ({setCurrentPage}) => {
       });
 
       const { token } = response.data;
-      
       if (token) {
         localStorage.setItem("token", token);
         updateUser(response.data);
@@ -82,14 +81,14 @@ const Login: React.FC<LoginProps> = ({setCurrentPage}) => {
         
         { error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
 
-        <button className='btn-primary'>
+        <button type='submit' className='btn-primary'>
           Login
         </button>
 
         <p className='text=[13px] text-slate-800 mt-3'>
           Dont have an account?{" "}
           <button 
-            type='submit'
+            type='button'
             className='font-medium text-primary hover:underline cursor-pointer'
             onClick={() => setCurrentPage("signup")}
           >
